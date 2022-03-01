@@ -10,12 +10,14 @@ public class Ticket {
     private Long id;
     private String num_ticket;
     private Date date_envoie;
-    private Boolean Statut;
-    private Boolean Etat;
+    private String type_demande;
     private String Description;
+    private String statut;
+    private String etat;
+
     @ManyToOne
     private Utilisateur utilisateur;
-    @OneToMany
+    @ManyToOne
     private Personnel personnel;
 
     public Long getId() {
@@ -42,20 +44,12 @@ public class Ticket {
         this.date_envoie = date_envoie;
     }
 
-    public Boolean getStatut() {
-        return Statut;
+    public String getType_demande() {
+        return type_demande;
     }
 
-    public void setStatut(Boolean statut) {
-        Statut = statut;
-    }
-
-    public Boolean getEtat() {
-        return Etat;
-    }
-
-    public void setEtat(Boolean etat) {
-        Etat = etat;
+    public void setType_demande(String type_demande) {
+        this.type_demande = type_demande;
     }
 
     public String getDescription() {
@@ -64,6 +58,22 @@ public class Ticket {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public Utilisateur getUtilisateur() {
@@ -82,3 +92,4 @@ public class Ticket {
         this.personnel = personnel;
     }
 }
+
