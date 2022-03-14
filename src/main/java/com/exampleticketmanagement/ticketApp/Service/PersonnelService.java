@@ -1,6 +1,7 @@
 package com.exampleticketmanagement.ticketApp.Service;
 
 import com.exampleticketmanagement.ticketApp.Model.Personnel;
+import com.exampleticketmanagement.ticketApp.Model.Utilisateur;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface PersonnelService {
     void updatePersonnel(Long id, Personnel personnel);
 
     void DeletePersonnel(Long id);
+
+    public Personnel authPersonnel(String email, String password, String type);
 }

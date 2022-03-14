@@ -19,7 +19,7 @@ public class Personnel {
     private String prenom;
     private String password;
     private String email;
-    private String username;
+    private String typeuser;
     private String tel;
     private String adresse;
 
@@ -63,12 +63,12 @@ public class Personnel {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTypeuser() {
+        return typeuser;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTypeuser(String typeuser) {
+        this.typeuser = typeuser;
     }
 
     public String getTel() {

@@ -20,8 +20,9 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
-    public void saveUtilisateur(Utilisateur utilisateur) {
-        utilisateurRepository.save(utilisateur);
+    public Utilisateur saveUtilisateur(Utilisateur utilisateur) {
+        utilisateur.setTypeuser("User");
+        return utilisateurRepository.save(utilisateur);
     }
 
     @Override
@@ -38,5 +39,10 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Override
     public void DeleteUtilisateur(Long id) {
         utilisateurRepository.deleteById(id);
+    }
+
+    @Override
+    public Utilisateur authUtilisateur(String email, String password, String type) {
+        return utilisateurRepository.findOneByEmailAndPasswordAndTypeuser(email, password, type);
     }
 }

@@ -27,6 +27,7 @@ public class PersonnelServiceImpl implements PersonnelService{
 
     @Override
     public Personnel savePersonnel(@RequestBody Personnel personnel) {
+        personnel.setTypeuser("Admin");
         return personnelRepository.save(personnel);
     }
 
@@ -37,6 +38,7 @@ public class PersonnelServiceImpl implements PersonnelService{
         listpersonnel.setPrenom(personnel.getPrenom());
         listpersonnel.setAdresse(personnel.getAdresse());
         listpersonnel.setEmail(personnel.getEmail());
+        listpersonnel.setTypeuser(personnel.getTypeuser());
         listpersonnel.setTel(personnel.getTel());
         listpersonnel.setPassword(personnel.getPassword());
 
@@ -46,5 +48,10 @@ public class PersonnelServiceImpl implements PersonnelService{
     @Override
     public void DeletePersonnel(Long id) {
 personnelRepository.deleteById(id);
+    }
+
+    @Override
+    public Personnel authPersonnel(String email, String password, String type) {
+        return personnelRepository.findOneByEmailAndPasswordAndTypeuser(email, password, type);
     }
 }

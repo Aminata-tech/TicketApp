@@ -9,11 +9,13 @@ import java.util.List;
 public interface UtilisateurService {
     List<Utilisateur> findAll() ;
 
-    void saveUtilisateur(Utilisateur utilisateur);
+    Utilisateur saveUtilisateur(Utilisateur utilisateur);
 
     void updateUtilisateur(Long id, Utilisateur utilisateur);
 
     void DeleteUtilisateur(Long id);
+
+    public Utilisateur authUtilisateur (String email, String password, String type);
 
 }
 

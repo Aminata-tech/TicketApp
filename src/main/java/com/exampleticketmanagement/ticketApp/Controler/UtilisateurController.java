@@ -22,8 +22,8 @@ public class UtilisateurController {
     }
 
     @PostMapping("/save/utilisateur")
-    public void saveUtilisateur(@RequestBody Utilisateur utilisateur){
-        utilisateurService.saveUtilisateur(utilisateur);
+    public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur){
+        return utilisateurService.saveUtilisateur(utilisateur);
 
     }
 
@@ -35,6 +35,11 @@ public class UtilisateurController {
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         utilisateurService.DeleteUtilisateur(id);
+    }
+
+    @GetMapping("/utilisateur/auth/{email}/{password}/{type}")
+    public Utilisateur authUtilisateur(@PathVariable("email") String email, @PathVariable("password") String password, @PathVariable("type") String type){
+        return utilisateurService.authUtilisateur(email, password, type);
     }
 }
 

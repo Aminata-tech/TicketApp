@@ -2,6 +2,7 @@ package com.exampleticketmanagement.ticketApp.Controler;
 
 import com.exampleticketmanagement.ticketApp.Model.Personnel;
 
+import com.exampleticketmanagement.ticketApp.Model.Utilisateur;
 import com.exampleticketmanagement.ticketApp.Service.PersonnelService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class PersonnelController {
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         personnelService.DeletePersonnel(id);
+    }
+
+    @GetMapping("/personnel/auth/{email}/{password}/{type}")
+    public Personnel authPersonnel(@PathVariable("email") String email, @PathVariable("password") String password, @PathVariable("type") String type){
+        return personnelService.authPersonnel(email, password, type);
     }
 }
