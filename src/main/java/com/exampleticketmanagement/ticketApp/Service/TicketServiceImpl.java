@@ -25,14 +25,21 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public void updateTicket(Long id, Ticket ticket) {
-       Ticket listticket = ticketRepository.getById(id);
-       listticket.setDate_envoie(new Date());
+    public Ticket updateTicket(Long id, Ticket ticket) {
+       Ticket listticket = ticketRepository.findById(id).get();
+      // listticket.setDate_envoie(new Date());
        listticket.setDescription(ticket.getDescription());
        listticket.setNum_ticket(ticket.getNum_ticket());
        listticket.setEtat(ticket.getEtat());
+       listticket.setStatut(ticket.getStatut());
        listticket.setPersonnel(ticket.getPersonnel());
        listticket.setUtilisateur(ticket.getUtilisateur());
+       return ticketRepository.save(listticket);
+    }
+
+    @Override
+    public Ticket detailTicket(Long id) {
+        return ticketRepository.findById(id).get();
     }
 
     @Override

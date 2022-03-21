@@ -27,8 +27,8 @@ public class TicketController {
     }
 
     @PutMapping("/update/ticket/{id}")
-    public void updateTicket(@PathVariable(value = "id") Long id,Ticket ticket){
-        ticketService.updateTicket(id, ticket);
+    public Ticket updateTicket(@PathVariable("id") Long id, @RequestBody Ticket ticket){
+        return ticketService.updateTicket(id, ticket);
     }
 
     @DeleteMapping("delete/{id}")
@@ -40,6 +40,11 @@ public class TicketController {
     @GetMapping("/listticket")
     public List<Ticket> meslisteticket(){
         return ticketService.mestickets();
+    }
+
+    @GetMapping("/detail/ticket/{id}")
+    public Ticket detailTicket(@PathVariable(value = "id") Long id){
+        return ticketService.detailTicket(id);
     }
 }
 
