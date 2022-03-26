@@ -1,5 +1,6 @@
 package com.exampleticketmanagement.ticketApp.Service;
 
+import com.exampleticketmanagement.ticketApp.EmailSenderService;
 import com.exampleticketmanagement.ticketApp.Model.Ticket;
 import com.exampleticketmanagement.ticketApp.Repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     TicketRepository ticketRepository;
+
+    @Autowired
+    EmailSenderService emailSenderService;
+
     @Override
     public List<Ticket> listeTicket() {
         return ticketRepository.findAll();
@@ -21,6 +26,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public void saveTicket(Ticket ticket) {
+        emailSenderService._sendEmail(ticket.getUtilisateur().getEmail(), "Votre demande a éte prise en charge", "Message de confirmation");
         ticketRepository.save(ticket);
     }
 
