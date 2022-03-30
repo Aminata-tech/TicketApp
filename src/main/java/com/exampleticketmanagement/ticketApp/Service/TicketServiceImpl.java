@@ -40,6 +40,14 @@ public class TicketServiceImpl implements TicketService {
        listticket.setStatut(ticket.getStatut());
        listticket.setPersonnel(ticket.getPersonnel());
        listticket.setUtilisateur(ticket.getUtilisateur());
+
+        if (listticket.getStatut().equals("traites")) {
+            emailSenderService._sendEmail(listticket.getUtilisateur().getEmail(), "Votre demande a éte validée avec succès", "Message de validation");
+        }
+        if (listticket.getStatut().equals("rejeter")) {
+            emailSenderService._sendEmail(listticket.getUtilisateur().getEmail(), "Désolé votre demande a éte réjetée", "Message de rejet");
+        }
+
        return ticketRepository.save(listticket);
     }
 
